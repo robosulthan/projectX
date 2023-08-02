@@ -30,7 +30,7 @@ except KeyError as e:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".iksaan.com","13.233.163.94"]
+ALLOWED_HOSTS = ["ipxxxx"]
 
 
 # Application definition
