@@ -64,6 +64,7 @@ pEnv() {
         tmpLog="/tmp/ik-install.log"
         # Update the apt package index:
         sudo apt-get update
+	sudo apt install -y redis
         # Install Docker Engine, containerd, and Docker Compose.
         sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
         which docker

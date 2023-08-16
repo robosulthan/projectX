@@ -7,3 +7,4 @@ sqlparse==0.4.3
 Celery==5.3.0
 django_elasticsearch_dsl_drf==0.22.5
 gunicorn==21.2.0
+redis==5.0.0

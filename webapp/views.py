@@ -10,10 +10,12 @@ import urllib.parse
 from .decorators import unauthenticated_user
 from django.contrib.auth.decorators import login_required
 #from .serializers import *
+from .tasks import go_to_sleep
 
 # Create your views here.
 
 def home(request):
+ 	go_to_sleep.delay(6)
         return render(request,'webapp/home.html')
 
 
@@ -38,7 +40,9 @@ def Register(request):
     return render(request, 'webapp/register.html', {'form':fm})
 
 def user_login(request):
-    if not request.user.is_authenticated:
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/dashboard/')
+    else:
         if request.method == "POST":
             fm = LoginForm(request=request, data=request.POST)
             if fm.is_valid():
@@ -61,8 +65,6 @@ def user_login(request):
             print("else part")
             fm = LoginForm()
         return render(request,'webapp/login.html',{'form':fm})
-    else:
-        return HttpResponseRedirect('/login/')
 
 def user_logout(request):
     logout(request)
