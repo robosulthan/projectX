@@ -15,10 +15,9 @@ from .tasks import go_to_sleep
 # Create your views here.
 
 def home(request):
- 	go_to_sleep.delay(6)
-        return render(request,'webapp/home.html')
-
-
+    go_to_sleep.delay(6)
+    return render(request,'webapp/home.html')
+ 
 def about(request):
     return render(request,'webapp/about.html')
 
